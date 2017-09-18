@@ -9,16 +9,15 @@
             function drawChart() {
                 var data = new google.visualization.DataTable();
                 data.addColumn('string', 'Name');
-                data.addColumn('string', 'Manager');
+                data.addColumn('string', 'Parent');
                 data.addColumn('string', 'ToolTip');
 
-                // For each orgchart box, provide the name, manager, and tooltip to show.
+                // For each box, provide the name, parent, and tooltip to show.
                 data.addRows([
-                    [{v:'Mike', f:'Mike<div style="color:red; font-style:italic">President</div>'}, '', 'The President'],
-                    [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'}, 'Mike', 'VP'],
-                    ['Alice', 'Mike', ''],
-                    ['Bob', 'Jim', 'Bob Sponge'],
-                    ['Carol', 'Bob', '']
+                    [{v:'Phuong Chau', f:'Phuong Chau<br/>Seattle WA, USA'}, '', ''],
+                    [{v:'Jimmy Chau', f:'Jimmy Chau<br/>Seattle WA, USA<br/>jimmychau84@yahoo.com'}, 'Phuong Chau', ''],
+                    [{v:'Sandy Chau', f:'Sandy Chau<br/>Seattle WA, USA<br/>sandychau16@gmail.com<br/><br/>Lam Doan<br/>Seattle WA, USA<br/>doanlam@gmail.com'}, 'Phuong Chau', ''],
+                    [{v:'Danny Chau', f:'Danny Chau<br/>Seattle WA, USA'}, 'Phuong Chau', '']
                 ]);
 
                 // Create the chart.
