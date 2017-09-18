@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
     <head>
+        <style type="text/css" media="screen">
+            .google-visualization-orgchart-table .google-visualization-orgchart-node {
+                min-width: 150px
+            }
+        </style>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {packages:["orgchart"]});
@@ -14,11 +19,38 @@
 
                 // For each box, provide the name, parent, and tooltip to show.
                 data.addRows([
-                    [{v:'Nga Ly', f:'Nga Ly<br/>Calgary AB, Canada'}, '', ''],
-                    [{v:'Phuong Chau', f:'Phuong Chau<br/>Seattle WA, USA'}, 'Nga Ly', ''],
-                    [{v:'Jimmy Chau', f:'Jimmy Chau<br/>Seattle WA, USA<br/>jimmychau84@yahoo.com'}, 'Phuong Chau', ''],
-                    [{v:'Sandy Chau', f:'Sandy Chau<br/>Seattle WA, USA<br/>sandychau16@gmail.com<br/><br/>Lam Doan<br/>Seattle WA, USA<br/>doanlam@gmail.com'}, 'Phuong Chau', ''],
-                    [{v:'Danny Chau', f:'Danny Chau<br/>Seattle WA, USA'}, 'Phuong Chau', '']
+                    [{v:'Nga Ly', f:'Nga Ly<br/>Calgary, Canada'}, '', ''],
+                        [{v:'3rd son', f:'3rd son'}, 'Nga Ly', ''],
+                            [{v:'Andy Ly', f:'Andy Ly + Miyuki Sato<br/>Munich, Germany'}, '3rd son', ''],
+                            [{v:'Esther Ly', f:'Esther Ly + Tobias Paulus<br/>Munich, Germany'}, '3rd son', ''],
+                                [{v:'Jona Paulus', f:'Jona Paulus<br/>Munich, Germany'}, 'Esther Ly', ''],
+                        [{v:'4th son', f:'4th son'}, 'Nga Ly', ''],
+                            [{v:'Amy Lee', f:'Amy Lee + Chiu Wing Wong<br/>Calgary, Canada'}, '4th son', ''],
+                            [{v:'Judy Lee', f:'Judy Lee + Brian Seo<br/>Calgary, Canada'}, '4th son', ''],
+                            [{v:'Annie Lee', f:'Annie Lee<br/>Calgary, Canada'}, '4th son', ''],
+                            [{v:'Jeffrey Lee', f:'Jeffrey Lee<br/>Calgary, Canada'}, '4th son', ''],
+                        [{v:'5th son', f:'5th son'}, 'Nga Ly', ''],
+                            [{v:'Annie Luu', f:'Annie Luu<br/>San Francisco, USA'}, '5th son', ''],
+                            [{v:'Alice Luu', f:'Alice Luu<br/>San Francisco, USA'}, '5th son', ''],
+                            [{v:'Kelvin Luu', f:'Kelvin Luu<br/>San Francisco, USA'}, '5th son', ''],
+                        [{v:'6th son', f:'6th son'}, 'Nga Ly', ''],
+                            [{v:'Cam Hoan Luu', f:'Cam Hoan Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Kiet Hoan Luu', f:'Kiet Hoan Luu<br/>Zwijndrecht, Netherlands'}, '6th son', ''],
+                            [{v:'Vinh Hoan Luu', f:'Vinh Hoan Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Long Hoan Luu', f:'Long Hoan Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Michelle Luu', f:'Michelle Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Joanne Luu', f:'Joanne Luu<br/>Weiden, Germany'}, '6th son', ''],
+                        [{v:'7th daughter', f:'7th daughter'}, 'Nga Ly', ''],
+                            [{v:'Sandy Huynh', f:'Sandy Huynh + Lennard Theunissen<br/>Dordrecht, Netherlands'}, '7th daughter', ''],
+                                [{v:'Roin Theunissen', f:'Roin Theunissen<br/>Dordrecht, Netherlands'}, 'Sandy Huynh', ''],
+                                [{v:'Jools Theunissen', f:'Jools Theunissen<br/>Dordrecht, Netherlands'}, 'Sandy Huynh', ''],
+                            [{v:'Wendy Huynh', f:'Wendy Huynh + Maarten van de End<br/>Dordrecht, Netherlands'}, '7th daughter', ''],
+                            [{v:'Mimi Huynh', f:'Mimi Huynh<br/>Rotterdam, Netherlands'}, '7th daughter', ''],
+                            [{v:'Elisa Huynh', f:'Elisa Huynh<br/>Dordrecht, Netherlands'}, '7th daughter', ''],
+                        [{v:'Phuong Chau', f:'Phuong Chau<br/>Seattle, USA'}, 'Nga Ly', ''],
+                            [{v:'Jimmy Chau', f:'Jimmy Chau<br/>Seattle, USA<br/>jimmychau84@yahoo.com'}, 'Phuong Chau', ''],
+                            [{v:'Sandy Chau', f:'Sandy Chau + Lam Doan<br/>Seattle, USA<br/>sandychau16@gmail.com<br/>doanlam@gmail.com'}, 'Phuong Chau', ''],
+                            [{v:'Danny Chau', f:'Danny Chau<br/>Seattle, USA'}, 'Phuong Chau', ''],
                 ]);
 
                 // Create the chart.
@@ -28,7 +60,7 @@
             }
         </script>
     </head>
-    <body>
+    <body style="overflow:auto">
         <div id="chart_div"></div>
     </body>
 </html>
