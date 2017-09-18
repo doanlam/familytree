@@ -1,171 +1,69 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
-<head>
-	<style type="text/css" media="screen">
-		* {margin: 0; padding: 0;}
+    <head>
+        <style type="text/css" media="screen">
+            .google-visualization-orgchart-table .google-visualization-orgchart-node {
+                min-width: 150px
+            }
+        </style>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {packages:["orgchart"]});
+            google.charts.setOnLoadCallback(drawChart);
 
-		.tree ul {
-			padding-top: 20px; position: relative;
-	
-			-webkit-transition: all 0.5s;
-			-moz-transition: all 0.5s;
-			transition: all 0.5s;
-		}
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Name');
+                data.addColumn('string', 'Parent');
+                data.addColumn('string', 'ToolTip');
 
-		.tree li {
-			float: left; text-align: center;
-			list-style-type: none;
-			position: relative;
-			padding: 20px 5px 0 5px;
-	
-			-webkit-transition: all 0.5s;
-			-moz-transition: all 0.5s;
-			transition: all 0.5s;
-		}
+                // For each box, provide the name, parent, and tooltip to show.
+                data.addRows([
+                    [{v:'Nga Ly', f:'Nga Ly<br/>Calgary, Canada'}, '', ''],
+                        [{v:'Quang Minh Luu', f:'Quang Minh Luu<br/>Ho Chi Minh City, Vietnam'}, 'Nga Ly', ''],
+                            [{v:'Andy Luu', f:'Andy Luu + Miyuki Sato<br/>Munich, Germany'}, 'Quang Minh Luu', ''],
+                            [{v:'Esther Luu', f:'Esther Luu + Tobias Paulus<br/>Munich, Germany'}, 'Quang Minh Luu', ''],
+                                [{v:'Jona Paulus', f:'Jona Paulus<br/>Munich, Germany'}, 'Esther Luu', ''],
+                        [{v:'Mike Lee', f:'Mike Lee'}, 'Nga Ly', ''],
+                            [{v:'Amy Lee', f:'Amy Lee + Chiu Wing Wong<br/>Calgary, Canada'}, 'Mike Lee', ''],
+                            [{v:'Judy Lee', f:'Judy Lee + Brian Seo<br/>Calgary, Canada'}, 'Mike Lee', ''],
+                                [{v:'Rayden Seo', f:'Rayden Seo<br/>Calgary, Canada'}, 'Judy Lee', ''],
+                            [{v:'Annie Lee', f:'Annie Lee + Jimmy Leung<br/>Calgary, Canada'}, 'Mike Lee', ''],
+                                [{v:'Oscar Leung', f:'Oscar Leung<br/>Calgary, Canada'}, 'Annie Lee', ''],
+                                [{v:'Oliver Leung', f:'Oliver Leung<br/>Calgary, Canada'}, 'Annie Lee', ''],
+                            [{v:'Jeffrey Lee', f:'Jeffrey Lee<br/>Calgary, Canada'}, 'Mike Lee', ''],
+                        [{v:'Vincent Luu', f:'Vincent Luu'}, 'Nga Ly', ''],
+                            [{v:'Annie Luu', f:'Annie Luu<br/>San Francisco, USA'}, 'Vincent Luu', ''],
+                            [{v:'Alice Luu', f:'Alice Luu<br/>San Francisco, USA'}, 'Vincent Luu', ''],
+                            [{v:'Kelvin Luu', f:'Kelvin Luu<br/>San Francisco, USA'}, 'Vincent Luu', ''],
+                        [{v:'6th son', f:'6th son'}, 'Nga Ly', ''],
+                            [{v:'Cam Hoan Luu', f:'Cam Hoan Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Kiet Hoan Luu', f:'Kiet Hoan Luu<br/>Zwijndrecht, Netherlands'}, '6th son', ''],
+                            [{v:'Vinh Hoan Luu', f:'Vinh Hoan Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Long Hoan Luu', f:'Long Hoan Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Michelle Luu', f:'Michelle Luu<br/>Weiden, Germany'}, '6th son', ''],
+                            [{v:'Joanne Luu', f:'Joanne Luu<br/>Weiden, Germany'}, '6th son', ''],
+                        [{v:'Tu Anh Luu', f:'Tu Anh Luu'}, 'Nga Ly', ''],
+                            [{v:'Sandy Huynh', f:'Sandy Huynh + Lennard Theunissen<br/>Dordrecht, Netherlands'}, 'Tu Anh Luu', ''],
+                                [{v:'Roin Theunissen', f:'Roin Theunissen<br/>Dordrecht, Netherlands'}, 'Sandy Huynh', ''],
+                                [{v:'Jools Theunissen', f:'Jools Theunissen<br/>Dordrecht, Netherlands'}, 'Sandy Huynh', ''],
+                            [{v:'Wendy Huynh', f:'Wendy Huynh + Maarten van de End<br/>Dordrecht, Netherlands'}, 'Tu Anh Luu', ''],
+                            [{v:'Mimi Huynh', f:'Mimi Huynh<br/>Rotterdam, Netherlands'}, 'Tu Anh Luu', ''],
+                            [{v:'Elisa Huynh', f:'Elisa Huynh<br/>Dordrecht, Netherlands'}, 'Tu Anh Luu', ''],
+                        [{v:'Phuong Chau', f:'Phuong Chau<br/>Seattle, USA'}, 'Nga Ly', ''],
+                            [{v:'Jimmy Chau', f:'Jimmy Chau<br/>Seattle, USA<br/>jimmychau84@yahoo.com'}, 'Phuong Chau', ''],
+                            [{v:'Sandy Chau', f:'Sandy Chau + Lam Doan<br/>Seattle, USA<br/>sandychau16@gmail.com<br/>doanlam@gmail.com'}, 'Phuong Chau', ''],
+                            [{v:'Danny Chau', f:'Danny Chau<br/>Seattle, USA<br/>dannychau22@gmail.com'}, 'Phuong Chau', ''],
+                ]);
 
-		/*We will use ::before and ::after to draw the connectors*/
-
-		.tree li::before, .tree li::after{
-			content: '';
-			position: absolute; top: 0; right: 50%;
-			border-top: 1px solid #ccc;
-			width: 50%; height: 45px;
-			z-index: -1;
-		}
-		.tree li::after{
-			right: auto; left: 50%;
-			border-left: 1px solid #ccc;
-		}
-
-		/*We need to remove left-right connectors from elements without 
-		any siblings*/
-		.tree li:only-child::after, .tree li:only-child::before {
-			display: none;
-		}
-
-		/*Remove space from the top of single children*/
-		.tree li:only-child{ padding-top: 0;}
-
-		/*Remove left connector from first child and 
-		right connector from last child*/
-		.tree li:first-child::before, .tree li:last-child::after{
-			border: 0 none;
-		}
-		/*Adding back the vertical connector to the last nodes*/
-		.tree li:last-child::before{
-			border-right: 1px solid #ccc;
-			border-radius: 0 5px 0 0;
-			
-			-webkit-transform: translateX(1px);
-			-moz-transform: translateX(1px);
-			transform: translateX(1px);
-			
-			-webkit-border-radius: 0 5px 0 0;
-			-moz-border-radius: 0 5px 0 0;
-			border-radius: 0 5px 0 0;
-		}
-		.tree li:first-child::after{
-			border-radius: 5px 0 0 0;
-			-webkit-border-radius: 5px 0 0 0;
-			-moz-border-radius: 5px 0 0 0;
-		}
-
-		/*Time to add downward connectors from parents*/
-		.tree ul ul::before{
-			content: '';
-			position: absolute; top: -12px; left: 50%;
-			border-left: 1px solid #ccc;
-			width: 0; height: 32px;
-			z-index: -1;
-		}
-
-		.tree li a{
-			border: 1px solid #ccc;
-			padding: 5px 10px;
-			text-decoration: none;
-			color: #666;
-			font-family: arial, verdana, tahoma;
-			font-size: 11px;
-			display: inline-block;
-			background: white;
-	
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-	
-			-webkit-transition: all 0.5s;
-			-moz-transition: all 0.5s;
-			transition: all 0.5s;
-		}
-		.tree li a+a {
-			margin-left: 20px;
-			position: relative;
-		}
-		.tree li a+a::before {
-			content: '';
-			position: absolute;
-			border-top: 1px solid #ccc;
-			top: 50%; left: -21px; 
-			width: 20px;
-		}
-
-		/*Time for some hover effects*/
-		/*We will apply the hover effect the the lineage of the element also*/
-		.tree li a:hover, .tree li a:hover~ul li a {
-			background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
-		}
-		/*Connector styles on hover*/
-		.tree li a:hover~ul li::after, 
-		.tree li a:hover~ul li::before, 
-		.tree li a:hover~ul::before, 
-		.tree li a:hover~ul ul::before
-		{
-			border-color: #94a0b4;
-		}
-	</style>
-</head>
-<body>
-	<!--
-	We will create a family tree using just CSS(3)
-	The markup will be simple nested lists
-	-->
-	<div class="tree">
-		<ul>
-			<li>
-				<a href="#">Parent</a>
-				<ul>
-					<li>
-						<a href="#">Child</a>
-						<ul>
-							<li>
-								<a href="#">Grand Child</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Sub Parent 1</a><a href="#">Sub Parent 2</a>
-						<ul>
-							<li><a href="#">Grand Child</a></li>
-							<li>
-								<a href="#">Grand Child</a>
-								<ul>
-									<li>
-										<a href="#">Great Grand Child</a>
-									</li>
-									<li>
-										<a href="#">Great Grand Child</a>
-									</li>
-									<li>
-										<a href="#">Great Grand Child</a>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#">Grand Child</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-</body>
+                // Create the chart.
+                var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+                // Draw the chart, setting the allowHtml option to true for the tooltips.
+                chart.draw(data, {allowHtml:true});
+            }
+        </script>
+    </head>
+    <body style="overflow:auto">
+        <div id="chart_div"></div>
+    </body>
 </html>
